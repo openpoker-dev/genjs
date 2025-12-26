@@ -1,0 +1,23 @@
+{
+  "name": "@openpoker-dev/genjs",
+  "version": "1.0.0",
+  "description": "gRPC web stubs",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openpoker-dev/genjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openpoker-dev/genjs/issues"
+  },
+  "homepage": "https://github.com/openpoker-dev/genjs#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.10.2",
+    "@connectrpc/connect-query": "^2.2.0",
+    "google-protobuf": "^3.21.4",
+    "grpc-web": "^2.0.2"
+  }
+}

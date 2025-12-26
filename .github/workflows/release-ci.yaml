@@ -12,11 +12,18 @@ jobs:
     steps:
     - uses: actions/checkout@v6
       name: Checkout
+      with:
+        fetch-depth: 0
     - uses: actions/setup-node@v6
       name: Setup Node.js
       with:
         node-version: '24.x'
         registry-url: 'https://npm.pkg.github.com'
+    - name: Sync version from Git Tag
+      run: |
+        CURRENT_TAG=${GITHUB_REF#refs/tags/v}
+        echo "Updating package.json to version $CURRENT_TAG"
+        npm version $CURRENT_TAG --no-git-tag-version
     - name: Publish
       run: npm publish
       env:
