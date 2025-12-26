@@ -38,3 +38,11 @@ export const playAction = GameService.method.playAction;
  * @generated from rpc game.v1alpha1.GameService.GetGameState
  */
 export const getGameState = GameService.method.getGameState;
+
+/**
+ * KickPlayer allows the host to remove a player (or bot) from the game.
+ * This is only allowed when the game is in "Waiting" or "Finished" status.
+ *
+ * @generated from rpc game.v1alpha1.GameService.KickPlayer
+ */
+export const kickPlayer = GameService.method.kickPlayer;

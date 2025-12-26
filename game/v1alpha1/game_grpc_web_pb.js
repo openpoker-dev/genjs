@@ -30,6 +30,8 @@ goog.require('proto.game.v1alpha1.GetGameStateRequest');
 goog.require('proto.game.v1alpha1.GetGameStateResponse');
 goog.require('proto.game.v1alpha1.JoinGameRequest');
 goog.require('proto.game.v1alpha1.JoinGameResponse');
+goog.require('proto.game.v1alpha1.KickPlayerRequest');
+goog.require('proto.game.v1alpha1.KickPlayerResponse');
 goog.require('proto.game.v1alpha1.PlayActionRequest');
 goog.require('proto.game.v1alpha1.PlayActionResponse');
 goog.require('proto.game.v1alpha1.StartGameRequest');
@@ -453,6 +455,67 @@ proto.game.v1alpha1.GameServicePromiseClient.prototype.watchGame =
       request,
       metadata || {},
       methodDescriptor_GameService_WatchGame);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.game.v1alpha1.KickPlayerRequest,
+ *   !proto.game.v1alpha1.KickPlayerResponse>}
+ */
+const methodDescriptor_GameService_KickPlayer = new grpc.web.MethodDescriptor(
+  '/game.v1alpha1.GameService/KickPlayer',
+  grpc.web.MethodType.UNARY,
+  proto.game.v1alpha1.KickPlayerRequest,
+  proto.game.v1alpha1.KickPlayerResponse,
+  /**
+   * @param {!proto.game.v1alpha1.KickPlayerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.game.v1alpha1.KickPlayerResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.game.v1alpha1.KickPlayerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.game.v1alpha1.KickPlayerResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.game.v1alpha1.KickPlayerResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.game.v1alpha1.GameServiceClient.prototype.kickPlayer =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/game.v1alpha1.GameService/KickPlayer',
+      request,
+      metadata || {},
+      methodDescriptor_GameService_KickPlayer,
+      callback);
+};
+
+
+/**
+ * @param {!proto.game.v1alpha1.KickPlayerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.game.v1alpha1.KickPlayerResponse>}
+ *     Promise that resolves to the response
+ */
+proto.game.v1alpha1.GameServicePromiseClient.prototype.kickPlayer =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/game.v1alpha1.GameService/KickPlayer',
+      request,
+      metadata || {},
+      methodDescriptor_GameService_KickPlayer);
 };
 
 
